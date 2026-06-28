@@ -20,9 +20,9 @@
 
 ## what it is
 
-you have 8 photos of your face and no idea which one to use as your profile pic. you stare. you ask a friend. you stall.
+you have 8 photos of your face and no idea which one to use as your profile pic. you stare. you ask a friend. you stall, but still now answer...
 
-PFP Studio takes the staring out of it. drop your photos in, it scores every face on four things, then tells you which one wins and *why* in plain words. like "face sits dead center, lit clean. this one wins it."
+PFP Studio takes the staring out of it. drop your photos in, it scores every face on four things, then tells you which one wins and *why* in plain words. 
 
 no account. no upload. your photos never leave the browser.
 
@@ -37,33 +37,11 @@ every photo runs through [face-api.js](https://github.com/justadudewhohacks/face
 
 each gets a score, they stack into a total, and the highest one wins. the winner card steps to center and drops its one-line reason. the phrasing is randomized per check so it doesn't read like a robot every time.
 
-> [!NOTE]
-> no face in a photo? it still gets a card. it just gets a gentle "couldn't find a face here" and sinks to the bottom instead of crashing the whole thing.
 
 ### why client-side matters
 
-face detection runs in *your* browser. the models load from `/models`, the photos get read straight off your disk into a `<canvas>`, scored, and that's it. nothing hits a server. nothing gets stored. close the tab and it's gone. that's the whole privacy story, and it's the honest kind.
+face detection runs in *your* browser. the models load from `/models`, the photos get read straight off your disk into a `<canvas>`, scored, and that's it. nothing hits a server. nothing gets stored. close the tab and it's gone.
 
-## quickstart
-
-```bash
-git clone https://github.com/Zrk16/pfp-studio.git
-cd pfp-studio
-npm install
-npm run dev
-```
-
-then open the local URL it prints.
-
-> [!IMPORTANT]
-> the face-api models live in `public/models`. they ship with the repo, so detection works out of the box. if faces stop getting detected, that folder is the first place to look.
-
-build for production:
-
-```bash
-npm run build
-npm run preview
-```
 
 ## stack
 
@@ -73,9 +51,7 @@ npm run preview
 - fonts: **Fraunces** for display, **DM Sans** for body
 - citrus gradient because orange is underrated
 
-## 🍊 one real tip
 
-the app rewards photos shot at eye level. camera too high or too low and your centering + framing scores tank, even if the photo's good. shoot straight on. it's the single biggest thing that moves the needle.
 
 ---
 
