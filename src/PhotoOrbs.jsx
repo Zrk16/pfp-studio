@@ -32,7 +32,7 @@ function PhotoOrbs({ photos, onRank, modelsLoaded, isRanking }) {
 
   return (
     <div className="orbs-stage">
-      <div className="orbs-rings">
+      <div className={`orbs-rings${isRanking ? ' orbs-rings--ranking' : ''}`}>
         {RINGS.map((ring) => (
           <div key={ring.name} className={`ring ring--${ring.name}`}>
             {buildItems(ring).map((it) => (
