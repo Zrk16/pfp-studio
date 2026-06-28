@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/favicon-512.png" alt="PFP Studio" width="120" />
+<img src="public/favicon-512.png" alt="PFP Studio" width="320" />
 
 # PFP Studio
 
