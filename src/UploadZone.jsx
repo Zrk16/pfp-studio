@@ -1,28 +1,25 @@
+
 function UploadZone({ onPhotosSelected }) {
-    function handleFileChange(e) {
-        const files = Array.from(e.target.files);
-        const photos = files.map(file => ({
-            file,
-            url: URL.createObjectURL(file),
-            name: file.name,
-        }));
-        onPhotosSelected(photos);
-    }
-
-    return (
-        <div>
-            <label>
-                <input
-                    type="file"
-                    accept="image/*, .png .jpeg, .jpg"
-                    multiple
-                    onChange={handleFileChange}
-                    style={{ display: 'none' }}
-                />
-                <span style={{ padding: '10px 20px', background: '#444', color: 'white', borderRadius: '8px' }}>Pick Photos</span>
-            </label>
-        </div>
-    )
+  function handleFileChange(e) {
+    const files = Array.from(e.target.files)
+    const photos = files.map(file => ({
+      file,
+      url: URL.createObjectURL(file),
+      name: file.name,
+    }))
+    onPhotosSelected(photos)
+  }
+  return (
+    <label className="upload-label">
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleFileChange}
+        style={{ display: 'none' }}
+      />
+      Pick Photos
+    </label>
+  )
 }
-
-export default UploadZone;
+export default UploadZone

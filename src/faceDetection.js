@@ -9,7 +9,7 @@ export async function loadModels() {
 
 export async function detectFace(image) {
     const detections = await faceapi
-        .detectSingleFace(image, new faceapi.TinyFaceDetectorOptions())
+        .detectSingleFace(image, new faceapi.TinyFaceDetectorOptions({ scoreThreshold: 0.3 }))
         .withFaceLandmarks();
 
     return detections || null;

@@ -97,13 +97,33 @@ export function scoreTotal(detection, imgElement) {
 
 }
 
+const PHRASES = {
+  centering: ['face sits right in the middle', 'framed dead center', 'lined up clean in the frame'],
+  size: ['face fills the frame just right', 'close enough to actually read who it is', 'crop lands at a good distance'],
+  brightness: ['lit clean, no weird shadows', 'lighting is even and soft', 'exposure is bang on'],
+  sharpness: ['crisp, every detail holds up', 'sharp focus, zero blur', 'clean and in focus'],
+}
+
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
 export function explainWinner(scores) {
-  const axes = [ 
-    { name: 'centering', value: scores.centering, text: 'the face is well-centered in the frame' },
-    { name: 'size', value: scores.size, text: 'the face fills a good portion of the frame' },
-    { name: 'brightness', value: scores.brightness, text: 'the lighting is well balanced' },
-    { name: 'sharpness', value: scores.sharpness, text: 'the photo is sharp and in focus' }
-  ]
-  const best = axes.reduce((a,b) => (a.value > b.value ? a : b))
-  return `This photo is the best because ${best.text}.`
+  const axes = [
+    { name: 'centering', value: scores.centering },
+    { name: 'size', value: scores.size },
+    { name: 'brightness', value: scores.brightness },
+    { name: 'sharpness', value: scores.sharpness },
+  ].sort((a, b) => b.value - a.value)
+
+  const best = pick(PHRASES[axes[0].name])
+  const second = axes[1].value >= 70 ? pick(PHRASES[axes[1].name]) : null
+
+  const openers = ['this one wins it.', 'easy top pick.', 'this is the one.', 'no contest here.']
+  const opener = pick(openers)
+
+  if (second) {
+    return `${opener} ${best}, plus ${second}.`
+  }
+  return `${opener} ${best}.`
 }
